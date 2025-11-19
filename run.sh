@@ -1,0 +1,1 @@
+./build/bin/native/debugExecutable/DK\ CLI.kexe "$@"

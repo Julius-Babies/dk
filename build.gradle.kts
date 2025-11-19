@@ -7,6 +7,7 @@ group = "me.user"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -34,6 +35,9 @@ kotlin {
     sourceSets {
         nativeMain.dependencies {
             implementation(libs.kotlinxSerializationJson)
+            implementation(libs.clikt)
+            implementation(libs.docker.kt)
+            implementation(libs.tui.table)
         }
     }
 }

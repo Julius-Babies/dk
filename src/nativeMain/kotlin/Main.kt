@@ -1,21 +1,15 @@
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import cli.commands.App
+import cli.commands.image.ImageCommand
+import cli.commands.image.pull.PullCommand
+import com.github.ajalt.clikt.command.main
+import com.github.ajalt.clikt.core.subcommands
+import kotlinx.coroutines.runBlocking
 
-@Serializable
-private data class Message(
-    val topic: String,
-    val content: String,
-)
-
-private val PrettyPrintJson = Json {
-    prettyPrint = true
-}
-
-fun main() {
-    val message = Message(
-        topic = "Kotlin/Native",
-        content = "Hello!"
-    )
-    println(PrettyPrintJson.encodeToString(message))
+fun main(args: Array<String>) {
+    runBlocking {
+        App()
+            .subcommands(ImageCommand())
+            .subcommands(PullCommand())
+            .main(args)
+    }
 }
